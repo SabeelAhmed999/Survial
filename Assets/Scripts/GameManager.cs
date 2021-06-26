@@ -32,13 +32,14 @@ public class GameManager : MonoBehaviour
         switch(gameState)
         {
             case GameState.JustStarted:
-                Time.timeScale=0;
+                PlayerContoller.Instance.enabled=false;
                 break;
             case GameState.Pause:
                 Time.timeScale=0;
                 break;
             case GameState.Running:
                 Time.timeScale=1;
+                PlayerContoller.Instance.enabled=true;
                 break;
             case GameState.Restart:
                 Time.timeScale=1;
