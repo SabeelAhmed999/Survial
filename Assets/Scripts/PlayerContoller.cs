@@ -149,6 +149,11 @@ public class PlayerContoller : MonoBehaviour
         {
             isGrounded=true;
         }
+                if(other.gameObject.CompareTag("EndTrigger"))
+        {
+            GameManager.Instance.gameState=GameState.Restart;
+            GameManager.Instance.ModifyGameState();
+        }
     }
     public void FallOff()
     {

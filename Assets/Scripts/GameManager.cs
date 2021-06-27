@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour
         switch(gameState)
         {
             case GameState.JustStarted:
-                Time.timeScale=0.01f;
+                Time.timeScale=0;
                 break;
             case GameState.Pause:
-                Time.timeScale=0.01f;
+                Time.timeScale=0;
                 break;
             case GameState.Running:
                 Time.timeScale=1;

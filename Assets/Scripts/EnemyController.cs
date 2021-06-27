@@ -12,6 +12,9 @@ public class EnemyController : MonoBehaviour
     public GameObject explodeEffect;
     public GameObject shockEffect;
     private bool deathByExplosion,deathByShoot,deathByShock,Died;
+    private bool isGrounded;
+    [SerializeField]
+    private int gravity;
     [SerializeField]
     private Slider healthSlider;
     private int maxHealth;
@@ -41,6 +44,12 @@ public class EnemyController : MonoBehaviour
             allPresentColliders[i].isTrigger=true;
         }
     }
+    private void Update() {
+        if(!isGrounded)
+        {
+            rigidbodyPlayer.AddForce(Vector3.down*gravity*Time.deltaTime,ForceMode.VelocityChange);
+        }
+    }
     private void OnCollisionEnter(Collision other) {
         if(GameManager.Instance.gameState==GameState.Running)
         {
@@ -65,6 +74,17 @@ public class EnemyController : MonoBehaviour
                     }
                 }
             }
+            if(other.gameObject.CompareTag("Ground"))
+            {
+                isGrounded=true;
+            }
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        if(other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded=false;
         }
     }
     private void OnTriggerStay(Collider other) {

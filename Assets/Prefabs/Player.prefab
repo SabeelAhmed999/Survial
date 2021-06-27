@@ -465,7 +465,7 @@ MonoBehaviour:
   shield: 0
   dieEffect: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
   shieldEffect: {fileID: 1844191813266838, guid: 968c924d2be019d4b9e67647551eec3e, type: 3}
-  gravity: 100
+  gravity: 200
   health: 15
   healthSlider: {fileID: 0}
   audioSource: {fileID: 3918908658727646251}
