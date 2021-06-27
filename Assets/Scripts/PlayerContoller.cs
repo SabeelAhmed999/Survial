@@ -60,13 +60,13 @@ public class PlayerContoller : MonoBehaviour
             rigidbodyPlayer.AddForce(Vector3.forward*moveSpeed*Time.deltaTime,ForceMode.VelocityChange);
              if(SwipeManager.swipeRight)
             {
-                moveDirection=moveDirection+30;
+                moveDirection=moveDirection+40;
                 rigidbodyPlayer.AddForce(Vector3.right*moveDirection*Time.deltaTime,ForceMode.Impulse);
                 animator.SetBool("WalkRight",true);
             }
             if(SwipeManager.swipeLeft)
             {
-                moveDirection=moveDirection+30;
+                moveDirection=moveDirection+40;
                 rigidbodyPlayer.AddForce(Vector3.left*moveDirection*Time.deltaTime,ForceMode.Impulse);
                 animator.SetBool("WalkLeft",true);
             }
