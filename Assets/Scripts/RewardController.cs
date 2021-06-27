@@ -32,6 +32,9 @@ public class RewardController : MonoBehaviour
                         PlayerContoller.Instance.health=PlayerContoller.Instance.health+1;
                     }
                     break;
+                case RewardType.Gold:
+                    GameManager.Instance.GoldEanred=GameManager.Instance.GoldEanred+1;
+                    break;
                 default:
                     return;
             }

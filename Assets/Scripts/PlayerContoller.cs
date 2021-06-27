@@ -80,6 +80,10 @@ public class PlayerContoller : MonoBehaviour
             {
                 rigidbodyPlayer.AddForce(Vector3.down*gravity*Time.deltaTime,ForceMode.VelocityChange);
             }
+            if(transform.position.y<-0.1f)
+            {
+                FallOff();
+            }
         }   
     }
 

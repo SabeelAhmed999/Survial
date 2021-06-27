@@ -347,13 +347,13 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3918908658727547527}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4d6797a654855fe4c88953e77ccd7a17, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.15497223
+  m_Radius: 0.1149241
   m_Height: 0.56485057
   m_Direction: 1
-  m_Center: {x: 0.0024698675, y: 0.27662623, z: 0.030141994}
+  m_Center: {x: 0.0054002404, y: 0.27662623, z: 0.030141994}
 --- !u!82 &3918908658727646251
 AudioSource:
   m_ObjectHideFlags: 0
