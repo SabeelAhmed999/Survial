@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum SoundClipToPlay{EnemyGotHit,EnemyDied,PlayerGotHit,PlayerDied,GameOver,LevelComplete,PowerUp}
+public enum SoundClipToPlay{EnemyDied,Bomb,Shock,PowerUp}
 public enum GameState{JustStarted,Running,LoadingLevel,Restart,Pause,GameOver}
 public class GameManager : MonoBehaviour
 {
+    private AudioSource audio;
+    public AudioClip[] clip;
     public GameState gameState;
     public int GoldEanred;
     public static GameManager Instance;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start() {
         ModifyGameState();
+        audio=GetComponent<AudioSource>();
     }
 
     public void ModifyGameState()
@@ -51,6 +54,26 @@ public class GameManager : MonoBehaviour
             case GameState.LoadingLevel:
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
 
+                break;
+            default:
+                return;
+        }
+    }
+    public void ClipToPlay(SoundClipToPlay soundClip)
+    {
+        switch(soundClip)
+        {
+            case SoundClipToPlay.Bomb:
+                audio.clip=clip[0];
+                audio.Play();
+                break;
+            case SoundClipToPlay.Shock:
+                audio.clip=clip[1];
+                audio.Play();
+                break;
+            case SoundClipToPlay.PowerUp:
+                audio.clip=clip[3];
+                audio.Play();
                 break;
             default:
                 return;

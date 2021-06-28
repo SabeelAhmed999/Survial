@@ -16,11 +16,10 @@ public class GunFunctionality : MonoBehaviour
     private void Start() {
         StartCoroutine(ShootingDelay());
     }
-    void Update()
-    {
+    private void FixedUpdate() {
         if(GameManager.Instance.gameState==GameState.Running)
         {
-            timer+=Time.deltaTime;
+            timer+=Time.fixedDeltaTime;
             if(timer>=fireRate)
             {
                 timer=0f;
@@ -28,7 +27,6 @@ public class GunFunctionality : MonoBehaviour
                 Shoot();
             }
         }
-
     }
     void Shoot()
     {

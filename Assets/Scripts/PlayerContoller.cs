@@ -8,7 +8,7 @@ public class PlayerContoller : MonoBehaviour
     public bool shield;
     public GameObject dieEffect;
     public GameObject shieldEffect;
-    private bool isGrounded;
+    private bool isGrounded,moveLeft,moveRight;
     [SerializeField]
     private int gravity;
     public static PlayerContoller Instance;
@@ -57,25 +57,48 @@ public class PlayerContoller : MonoBehaviour
     {
         if(GameManager.Instance.gameState==GameState.Running)
         {
-            rigidbodyPlayer.AddForce(Vector3.forward*moveSpeed*Time.deltaTime,ForceMode.VelocityChange);
+            
              if(SwipeManager.swipeRight)
             {
-                moveDirection=moveDirection+40;
-                rigidbodyPlayer.AddForce(Vector3.right*moveDirection*Time.deltaTime,ForceMode.Impulse);
-                animator.SetBool("WalkRight",true);
+                moveRight=true;
             }
             if(SwipeManager.swipeLeft)
             {
-                moveDirection=moveDirection+40;
+                moveLeft=true;
+            }
+
+            if(SwipeManager.swipeLeft==false&&SwipeManager.swipeRight==false)
+            {
+                moveRight=false;
+                moveLeft=false;
+            }
+
+        }   
+    }
+
+    private void FixedUpdate() {
+        if(GameManager.Instance.gameState==GameState.Running)
+        {
+            rigidbodyPlayer.AddForce(Vector3.forward*moveSpeed*Time.deltaTime,ForceMode.VelocityChange);
+            if(moveLeft)
+            {
+                moveDirection=moveDirection+120;
                 rigidbodyPlayer.AddForce(Vector3.left*moveDirection*Time.deltaTime,ForceMode.Impulse);
                 animator.SetBool("WalkLeft",true);
             }
-            if(SwipeManager.swipeLeft==false&&SwipeManager.swipeRight==false)
+            if(moveRight)
+            {
+                moveDirection=moveDirection+120;
+                rigidbodyPlayer.AddForce(Vector3.right*moveDirection*Time.deltaTime,ForceMode.Impulse);
+                animator.SetBool("WalkRight",true);
+            }
+            if(moveLeft==false&&moveRight==false)
             {
                 animator.SetBool("WalkLeft",false);
                 animator.SetBool("WalkRight",false);
                 moveDirection=0;
             }
+
             if(!isGrounded)
             {
                 rigidbodyPlayer.AddForce(Vector3.down*gravity*Time.deltaTime,ForceMode.VelocityChange);
@@ -84,7 +107,7 @@ public class PlayerContoller : MonoBehaviour
             {
                 FallOff();
             }
-        }   
+        }
     }
 
     public IEnumerator ShieldController()

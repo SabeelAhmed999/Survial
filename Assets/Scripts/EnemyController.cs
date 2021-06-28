@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
             allPresentColliders[i].isTrigger=true;
         }
     }
-    private void Update() {
+    private void FixedUpdate() {
         if(!isGrounded)
         {
             rigidbodyPlayer.AddForce(Vector3.down*gravity*Time.deltaTime,ForceMode.VelocityChange);
@@ -147,7 +147,7 @@ public class EnemyController : MonoBehaviour
                 {
                     activeRB[j].velocity=Vector3.zero;
                 }
-                Destroy(gameObject,2f);
+                Destroy(gameObject,1f);
             }
         }
 
@@ -157,6 +157,7 @@ public class EnemyController : MonoBehaviour
     {
         if(deathByExplosion==true&&deathByShoot==false&&deathByShock==false)
         {
+            GameManager.Instance.ClipToPlay(SoundClipToPlay.Bomb);
             Died=true;
             healthSlider.gameObject.SetActive(false);
             GameObject effect =Instantiate(explodeEffect,transform.position,Quaternion.identity);
@@ -183,6 +184,7 @@ public class EnemyController : MonoBehaviour
         if(deathByShock==true&&deathByShoot==false&&deathByExplosion==false)
         {
             Died=true;
+            GameManager.Instance.ClipToPlay(SoundClipToPlay.Shock);
             healthSlider.gameObject.SetActive(false);
             GameObject effect =Instantiate(shockEffect,transform.position,Quaternion.identity);
             Destroy(effect,3f);

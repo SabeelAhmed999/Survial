@@ -465,7 +465,7 @@ MonoBehaviour:
   shield: 0
   dieEffect: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
   shieldEffect: {fileID: 1844191813266838, guid: 968c924d2be019d4b9e67647551eec3e, type: 3}
-  gravity: 200
+  gravity: 300
   health: 15
   healthSlider: {fileID: 0}
   audioSource: {fileID: 3918908658727646251}
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1203895612169369623, guid: 0540e502179699042b83b400e45016d7, type: 3}
   firePoint: {fileID: 3918908657080988197}
-  fireRate: 1
+  fireRate: 0.1
   damagePower: 5
 --- !u!1 &3918908658727547529
 GameObject:

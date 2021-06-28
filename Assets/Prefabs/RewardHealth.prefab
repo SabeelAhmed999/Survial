@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6498720370595455518}
   - component: {fileID: 6498720370595455586}
   m_Layer: 0
-  m_Name: Sphere 2
+  m_Name: RewardHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
